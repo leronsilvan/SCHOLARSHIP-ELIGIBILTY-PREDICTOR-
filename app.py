@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import numpy as np
 import os
+from huggingface_hub import hf_hub_download
 
 # Page title
 st.set_page_config(page_title="Scholar Outcome Predictor", layout="centered")
@@ -9,7 +10,7 @@ st.title("🎓 Scholar Outcome Predictor")
 st.markdown("Fill the form below to predict if the scholar will have a successful outcome.")
 
 # Load model
-model_path = "Scholarship.pkl"
+model_path =hf_hub_download(repo_id="Leron7/scholar", filename="Scholarship.pkl")
 if not os.path.exists(model_path):
     st.error("❌ Model file not found. Please ensure 'model.pkl' is in the same folder.")
     st.stop()
